@@ -41,7 +41,9 @@
                 @Html.DisplayFor(modelItem => item.ProductName)
             </td>
             <td class="@(item.Price >50 ? "text-danger" : "" )">
-                @Html.DisplayFor(modelItem => item.Price)
+                @*@Html.DisplayFor(modelItem => item.Price)*@
+                @*如果要在view中顯示特定的資料顯示方式可直接用@string.Format*@
+                @string.Format("{0:N0}", item.Price)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Active)
