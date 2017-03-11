@@ -30,6 +30,8 @@ namespace MVC5Course.Models
 
         [Required]
         [Range (100,5000,ErrorMessage = "商品金額超過範圍 ({0} ~ {1} ~ {2})") ]
+        //如果要再全部的網頁中顯示特定的顯示方式
+        [DisplayFormat(DataFormatString ="{0:N0}")]
         public Nullable<decimal> Price { get; set; }
 
         [Required]
