@@ -26,5 +26,9 @@ namespace MVC5Course.Controllers
 
             return View();
         }
+        public ActionResult H_Test()
+        {
+            return View();
+        }
     }
 }
