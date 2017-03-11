@@ -36,6 +36,7 @@ namespace MVC5Course.Models
 
         [Required]
         public Nullable<bool> Active { get; set; }
+
         [Required]
         [Range (0,10000,ErrorMessage = "庫存量不得超過{2}!!")]
         public Nullable<decimal> Stock { get; set; }
