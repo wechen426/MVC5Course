@@ -33,7 +33,7 @@ namespace MVC5Course.Controllers
             {
                 data = data.OrderByDescending(p => p.Price);
             }
-
+            ViewBag.sortBy = sortBy;
             ViewBag.keyword = keyword;
             //return View(db.Product.Take(20).ToList());
             return View(data.ToPagedList(pageNO,20));
