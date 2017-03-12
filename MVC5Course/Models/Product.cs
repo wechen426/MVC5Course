@@ -11,8 +11,7 @@ namespace MVC5Course.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Product
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -25,11 +24,8 @@ namespace MVC5Course.Models
         public string ProductName { get; set; }
         public Nullable<decimal> Price { get; set; }
         public Nullable<bool> Active { get; set; }
-
-        //如果同時在MODEL及partial.cs中針對某個欄位去做邏輯驗證
-        //會以partial為主
-        [Range(0, 500, ErrorMessage = "庫存量超過{2}!!")]
         public Nullable<decimal> Stock { get; set; }
+        public bool IsDeleted { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderLine> OrderLine { get; set; }
