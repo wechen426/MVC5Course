@@ -7,11 +7,13 @@
 <h2>Index</h2>
 <form>
 
-     @Html.TextBox("keyword")
+    @Html.TextBox("keyword")
     <input type="submit" value="search" />
 </form>
-@Html.Partial("_PagerdListPartial",Model)
-<table class="table">
+@Html.Partial("_PagerdListPartial", Model)
+@using (Html.BeginForm())
+{ 
+    <table class="table"> 
     <p>
         @Html.ActionLink("Create New", "Create")
     </p>
@@ -35,31 +37,37 @@
         </th>
         <th></th>
     </tr>
+@*建立一個陣列*@
+@{
+    var dataforEdit = Model.ToArray();
+}
 
-
-    @foreach (var item in Model)
+    @for (var i=0; i<dataforEdit.Length;i++)
     {
+        @Html.HiddenFor(modelItem => dataforEdit[i].ProductId)
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.ProductName)
+                @Html.EditorFor(modelItem => dataforEdit[i].ProductName)
             </td>
-            <td class="@(item.Price >50 ? "text-danger" : "" )">
-                @Html.DisplayFor(modelItem => item.Price)
+            <td class="@(dataforEdit[i].Price >50 ? "text-danger" : "" )">
+                @Html.EditorFor(modelItem => dataforEdit[i].Price)
                 @*如果要在view中顯示特定的資料顯示方式可直接用@string.Format*@
                 @*@string.Format("{0:N0}", item.Price)*@
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Active)
+                @Html.EditorFor(modelItem => dataforEdit[i].Active)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Stock)
+                @Html.EditorFor(modelItem => dataforEdit[i].Stock)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.ProductId }) |
-                @Html.ActionLink("Details", "Details", new { id = item.ProductId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.ProductId })
+                @Html.ActionLink("Edit", "Edit", new { id = dataforEdit[i].ProductId }) |
+                @Html.ActionLink("Details", "Details", new { id = dataforEdit[i].ProductId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = dataforEdit[i].ProductId })
             </td>
         </tr>
     }
 
 </table>
+        <input type="submit" value="save">
+    }

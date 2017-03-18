@@ -20,6 +20,14 @@ namespace MVC5Course.Controllers
         // GET: Products
         public ActionResult Index(string sortBy,string keyword,int pageNO = 1)
         {
+            searchIndexdata(sortBy, keyword, pageNO);
+            //return View(db.Product.Take(20).ToList());
+            //return View(data.ToPagedList(pageNO,20));
+            return View();
+        }
+
+        private void searchIndexdata(string sortBy, string keyword, int pageNO)
+        {
             var data = repo.All().AsQueryable();
             if (!string.IsNullOrEmpty(keyword))
             {
@@ -36,10 +44,33 @@ namespace MVC5Course.Controllers
             }
             ViewBag.sortBy = sortBy;
             ViewBag.keyword = keyword;
-            //return View(db.Product.Take(20).ToList());
-            return View(data.ToPagedList(pageNO,20));
+
+            ViewData.Model = data.ToPagedList(pageNO, 10);
         }
 
+        [HttpPost]
+        public ActionResult Index(Product[] dataforEdit, string sortBy, string keyword, int pageNO = 1)
+        {
+            //接收View傳回的Form資料
+            if (ModelState.IsValid == true)
+            {
+                foreach (var item in dataforEdit)
+                {
+                    var prod = repo.Find(item.ProductId);
+                    prod.ProductName = item.ProductName;
+                    prod.Price = item.Price;
+                    prod.Stock = item.Stock;
+                    prod.Active = item.Active;
+                    
+                }
+                repo.UnitOfWork.Commit();
+                return RedirectToAction("Index");
+            }
+            ViewBag.keyword = keyword;
+            //在 Index View中重新顯示更新的值
+            searchIndexdata(sortBy, keyword, pageNO);
+            return View();
+        }
         // GET: Products/Details/5
         public ActionResult Details(int? id)
         {
