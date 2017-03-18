@@ -127,17 +127,19 @@ namespace MVC5Course.Controllers
         // POST: Products/Edit/5
         // 若要免於過量張貼攻擊，請啟用想要繫結的特定屬性，如需
         // 詳細資訊，請參閱 http://go.microsoft.com/fwlink/?LinkId=317598。
+        //修改 ProductsController 的 Edit() 動作，改用 TryUpdateModel 來執行模型繫結
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ProductId,ProductName,Price,Active,Stock")] Product product)
+        public ActionResult Edit(int id, FormCollection form)
         {
-            if (ModelState.IsValid)
+            
+                var product = repo.Find(id);
+            if (TryUpdateModel(product, new string[] { "ProductName", "Stock" }))
             {
-                var db = repo.UnitOfWork.Context;
-                db.Entry(product).State = EntityState.Modified;
                 repo.UnitOfWork.Commit();
                 return RedirectToAction("Index");
             }
+            
             return View(product);
         }
 
