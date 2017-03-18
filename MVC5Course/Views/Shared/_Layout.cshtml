@@ -29,6 +29,14 @@
                     <li>@Html.ActionLink("Test", "Index", "Test")</li>
                     <li>@Html.ActionLink("產品", "Index", "Products")</li>
                 </ul>
+                @{
+                    var login = TempData["loginVM"] as MVC5Course.Models.LoginVM;
+                }
+                @if (login != null)
+                {
+                    <span style="color:red"> 安安 @login.username  你好幾歲住哪?</span>
+                }
+                
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
