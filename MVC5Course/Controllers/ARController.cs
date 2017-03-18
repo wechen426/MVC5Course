@@ -16,11 +16,12 @@ namespace MVC5Course.Controllers
 
         public ActionResult FileResult1()
         {
-            //return View();
+            //把檔案丟出去
             return File(Server.MapPath("~/Content/mmm.jpg"), "image/jepg");
         }
         public ActionResult FR1()
         {
+            //下載含檔名
             return View(File(Server.MapPath("~/Content/mmm.jpg"), "image/jepg", "1_1_50"));
             
         }
