@@ -293,6 +293,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\mmm.jpg" />
     <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -397,6 +398,8 @@
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Shared\_PagerdListPartial.cshtml" />
     <Content Include="Views\AR\Index.cshtml" />
+    <Content Include="Views\AR\FileResult1.cshtml" />
+    <Content Include="Views\AR\showimg.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
