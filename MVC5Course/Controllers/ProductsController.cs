@@ -13,10 +13,10 @@ using PagedList;
 namespace MVC5Course.Controllers
 {
    // [Authorize]
-    public class ProductsController : Controller
+    public class ProductsController :BaseController
     {
         //private FabricsEntities db = new FabricsEntities();
-        ProductRepository repo = RepositoryHelper.GetProductRepository();
+        
         // GET: Products
         public ActionResult Index(string sortBy,string keyword,int pageNO = 1)
         {
