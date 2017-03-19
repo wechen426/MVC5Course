@@ -417,7 +417,6 @@
     <Content Include="Views\Shared\ErrorDbEntityValidation.cshtml" />
     <Content Include="Views\Home\RazotTest.cshtml" />
     <Content Include="Views\Home\viewTest.cshtml" />
-    <Content Include="Views\Shared\_LayoutMetro.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
