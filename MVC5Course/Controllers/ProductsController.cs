@@ -139,6 +139,7 @@ namespace MVC5Course.Controllers
             {
                 
             }
+            //測試自訂HandleError，測完記得放回去TryUpdateModel
             repo.UnitOfWork.Commit();
             return RedirectToAction("Index");
             //return View(product);
