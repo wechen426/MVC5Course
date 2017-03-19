@@ -21,7 +21,7 @@ namespace MVC5Course.Controllers
             //跳出例外的錯誤
             if (err==1)
             {
-                throw new AggregateException();
+                throw new Exception();
 
             }
             return View();
