@@ -43,6 +43,11 @@
         </dd>
 
     </dl>
+    <p>利用Html.pratial 顯示ChildView</p>
+    @Html.Partial("OrderLine",Model.OrderLine)
+    <p>利用Hhml.action 顯示ChildView</p>
+    @Html.Action("OrderLine", new { id=Model.ProductId})
+
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.ProductId }) |
