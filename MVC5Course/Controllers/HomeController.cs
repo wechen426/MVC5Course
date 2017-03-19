@@ -8,7 +8,7 @@ using System.Web.Security;
 
 namespace MVC5Course.Controllers
 {
-    public class HomeController : BaseController
+    public class HomeController :Controller
     {
         public ActionResult Index()
         {
@@ -67,6 +67,12 @@ namespace MVC5Course.Controllers
         {
             FormsAuthentication.SignOut();
             return RedirectToAction("Index");
+        }
+
+        public ActionResult RazotTest()
+        {
+            int[] data = { 1, 2, 3, 4, 5 };
+            return PartialView(data);
         }
     }
 }

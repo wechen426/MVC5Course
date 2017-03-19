@@ -397,6 +397,7 @@
     <Content Include="Views\AR\FileResult1.cshtml" />
     <Content Include="Views\AR\showimg.cshtml" />
     <Content Include="Views\Shared\ErrorDbEntityValidation.cshtml" />
+    <Content Include="Views\Home\RazotTest.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
