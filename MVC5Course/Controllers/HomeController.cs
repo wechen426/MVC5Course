@@ -15,10 +15,15 @@ namespace MVC5Course.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult About(int err=0)
         {
             ViewBag.Message = "Your application description page!";
+            //跳出例外的錯誤
+            if (err==1)
+            {
+                throw new AggregateException();
 
+            }
             return View();
         }
 
