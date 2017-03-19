@@ -8,7 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using MVC5Course.Models;
 using PagedList;
-
+using System.Data.Entity.Validation;
 
 namespace MVC5Course.Controllers
 {
@@ -130,17 +130,18 @@ namespace MVC5Course.Controllers
         //修改 ProductsController 的 Edit() 動作，改用 TryUpdateModel 來執行模型繫結
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [HandleError (View= "ErrorDbEntityValidation", ExceptionType = typeof(DbEntityValidationException))]
         public ActionResult Edit(int id, FormCollection form)
         {
             
                 var product = repo.Find(id);
             if (TryUpdateModel(product, new string[] { "ProductName", "Stock" }))
             {
-                repo.UnitOfWork.Commit();
-                return RedirectToAction("Index");
+                
             }
-            
-            return View(product);
+            repo.UnitOfWork.Commit();
+            return RedirectToAction("Index");
+            //return View(product);
         }
 
         // GET: Products/Delete/5
